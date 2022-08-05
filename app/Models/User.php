@@ -24,6 +24,20 @@ class User extends Model
         'password'
     ];
 
+    //relationsships
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
+    //relacionamento usuário e telefone
+
+    public function phones()
+    {
+        return $this->hasMany(Phone::class);
+    }
+
+
     //mutators
     public function setPasswordAttribute($value)
     {

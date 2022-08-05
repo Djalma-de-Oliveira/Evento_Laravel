@@ -21,6 +21,11 @@ Route::post('register', [RegisterController::class,'store'])->name('auth.registe
 
 //rota de teste para não mostrar a senha
 //Route::get('teste', function() {
+    //$address = \App\Models\Address::find(2);
+    //return $address->user;
+
+    //$user = \App\Models\User::find(2);
+    //return $user->address;
     //return \App\Models\User::all();
 
     //});
