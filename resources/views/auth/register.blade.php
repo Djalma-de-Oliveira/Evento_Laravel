@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <input
                              type="text"
-                             name="name"
+                             name="user[name]"
                              class="form-control"
                              placeholder="Nome"
                              >
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <input
                             type="email"
-                            name="email"
+                            name="user[email]"
                             class="form-control"
                             placeholder="E-mail"
                             >
@@ -41,7 +41,7 @@
                         <div class="form-group">
                             <input
                             type="text"
-                            name="cpf"
+                            name="user[cpf]"
                             class="form-control"
                             placeholder="CPF"
                             >
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <input
                              type="password"
-                             name="password"
+                             name="user[password]"
                              class="form-control"
                              placeholder="Senha"
                              >
@@ -67,7 +67,7 @@
                    <div class="form-group">
                            <input
                             type="text"
-                            name="cep"
+                            name="address[cep]"
                             class="form-control"
                             placeholder="CEP"
                             >
@@ -77,7 +77,7 @@
                    <div class="form-group">
                            <input
                             type="text"
-                            name="uf"
+                            name="address[uf]"
                             class="form-control"
                             placeholder="UF"
                             >
@@ -88,7 +88,7 @@
                    <div class="form-group">
                            <input
                             type="text"
-                            name="city"
+                            name="address[city]"
                             class="form-control"
                             placeholder="Cidade"
                             >
@@ -99,7 +99,7 @@
                    <div class="form-group">
                            <input
                             type="text"
-                            name="street"
+                            name="address[street]"
                             class="form-control"
                             placeholder="Logradouro"
                             >
@@ -110,7 +110,7 @@
                    <div class="form-group">
                            <input
                             type="text"
-                            name="number"
+                            name="address[number]"
                             class="form-control"
                             placeholder="Número"
                             >
@@ -121,7 +121,7 @@
                    <div class="form-group">
                            <input
                             type="text"
-                            name="district"
+                            name="address[district]"
                             class="form-control"
                             placeholder="Bairro"
                             >
@@ -132,7 +132,7 @@
                    <div class="form-group">
                            <input
                             type="text"
-                            name="complement"
+                            name="address[complement]"
                             class="form-control"
                             placeholder="Complemento"
                             >
