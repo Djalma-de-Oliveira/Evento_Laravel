@@ -59,11 +59,94 @@
                     </div>
                 </div>
 
+
+                <hr>
+
+                <div class="row mt-4">
+                    <div class="col-md-3">
+                   <div class="form-group">
+                           <input
+                            type="text"
+                            name="cep"
+                            class="form-control"
+                            placeholder="CEP"
+                            >
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                   <div class="form-group">
+                           <input
+                            type="text"
+                            name="uf"
+                            class="form-control"
+                            placeholder="UF"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                   <div class="form-group">
+                           <input
+                            type="text"
+                            name="city"
+                            class="form-control"
+                            placeholder="Cidade"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="col-md-9">
+                   <div class="form-group">
+                           <input
+                            type="text"
+                            name="street"
+                            class="form-control"
+                            placeholder="Logradouro"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                   <div class="form-group">
+                           <input
+                            type="text"
+                            name="number"
+                            class="form-control"
+                            placeholder="Número"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                   <div class="form-group">
+                           <input
+                            type="text"
+                            name="district"
+                            class="form-control"
+                            placeholder="Bairro"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                   <div class="form-group">
+                           <input
+                            type="text"
+                            name="complement"
+                            class="form-control"
+                            placeholder="Complemento"
+                            >
+                        </div>
+                    </div>
+                    </div>
+
+                    <hr>
+
             <button type="submit" class="btn btn-success btn-block mt-3">
                 Criar conta
                 </button>
             </form>
         </div>
-</div>
+    </div>
 </body>
 </html>
