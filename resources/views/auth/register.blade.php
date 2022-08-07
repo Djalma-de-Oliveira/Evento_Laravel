@@ -15,9 +15,7 @@
     <div class="card shadow my-5 w-75 mx-auto">
         <div class="card-body">
 
-            <!--<?php
-            var_dump($errors);
-            ?>-->
+            
 
 
             <form action="{{ route('auth.register.store') }}" method="POST">
@@ -52,7 +50,7 @@
                         <div class="form-group">
                             <input type="text"
                             name="user[cpf]"
-                            class="form-control {{ $errors->has('user.cpf') ? 'is-invalid' : '' }}"
+                            class="form-control cpf {{ $errors->has('user.cpf') ? 'is-invalid' : '' }}"
                             placeholder="CPF"
                             value="{{ old('user.cpf') }}"
                             >
@@ -73,6 +71,17 @@
                     </div>
                 </div>
 
+                <div class="col-12 col-md-6">  
+                    <div class="form-group">     
+                        <input
+                            type="password"
+                            name="user[password_confirmation]"
+                            class="form-control"
+                            placeholder="Confirmar Senha"
+                        >
+                    </div>
+                </div>
+            </div>
 
                 <hr>
 
@@ -81,7 +90,8 @@
                         <div class="form-group">
                             <input type="text"
                             name="address[cep]"
-                            class="form-control {{ $errors->has('address.cep') ? 'is-invalid' : '' }}"
+                            class="form-control cep {{ $errors->has('address.cep') ? 'is-invalid' : '' }}"
+                            id="cep"
                             placeholder="CEP"
                             value="{{ old('address.cep') }}"
                             >
@@ -93,7 +103,8 @@
                         <div class="form-group">
                             <input type="text"
                             name="address[uf]"
-                            class="form-control {{ $errors->has('address.uf') ? 'is-invalid' : '' }}"
+                            class="form-control uf {{ $errors->has('address.uf') ? 'is-invalid' : '' }}"
+                            id="uf"
                             placeholder="UF"
                             value="{{ old('address.uf') }}"
                             >
@@ -107,6 +118,7 @@
                             <input type="text"
                             name="address[city]"
                             class="form-control {{ $errors->has('address.city') ? 'is-invalid' : '' }}"
+                            id="city"
                             placeholder="Cidade"
                             value="{{ old('address.city') }}"
                             >
@@ -120,6 +132,7 @@
                             <input type="text"
                             name="address[street]"
                             class="form-control {{ $errors->has('address.street') ? 'is-invalid' : '' }}"
+                            id="street"
                             placeholder="Logradouro"
                             value="{{ old('address.street') }}"
                             >
@@ -146,6 +159,7 @@
                             <input type="text"
                             name="address[district]"
                             class="form-control {{ $errors->has('address.district') ? 'is-invalid' : '' }}"
+                            id="district"
                             placeholder="Bairro"
                             value="{{ old('address.district') }}"
                             >
@@ -174,7 +188,7 @@
                         <div class="form-group">
                             <input type="text"
                             name="phones[0][number]"
-                            class="form-control {{ $errors->has('phones.0.number') ? 'is-invalid' : '' }}"
+                            class="form-control phone {{ $errors->has('phones.0.number') ? 'is-invalid' : '' }}"
                             placeholder="Telefone"
                             value="{{ old('phones.0.number') }}"
                             >
@@ -187,7 +201,7 @@
                         <div class="form-group">
                             <input type="text"
                             name="phones[1][number]"
-                            class="form-control {{ $errors->has('phones.1.number') ? 'is-invalid' : '' }}"
+                            class="form-control cellphone {{ $errors->has('phones.1.number') ? 'is-invalid' : '' }}"
                             placeholder="Celular"
                             value="{{ old('phones.1.number') }}"
                             >
@@ -203,6 +217,9 @@
             </form>
         </div>
     </div>
-</body>
 
+ <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+ <script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
+<script> src="{{ asset('js/auth/register.js')"></script>
+</body>
 </html>
