@@ -20,7 +20,7 @@ class Address extends Model
         'user_id'
     ];
 
-    //relationsships
+  
     public function user()
     {
         return $this->belongsTo(User::class);

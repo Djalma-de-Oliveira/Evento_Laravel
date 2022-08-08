@@ -1,5 +1,9 @@
 <?php
+
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\http\Controllers\Participant\Dashboard\DashboardController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('register', [RegisterController::class,'create'])->name('auth.register.create');
-Route::post('register', [RegisterController::class,'store'])->name('auth.register.store');
+Route::get('register', [RegisterController::class, 'create'])->name('auth.register.create');
+Route::post('register', [RegisterController::class, 'store'])->name('auth.register.store');
+Route::get('login', [LoginController::class, 'create'])->name('auth.login.create');
+Route::post('login', [LoginController::class, 'store'])->name('auth.login.store');
 
+Route::get('participant/dashboard', [DashboardController::class, 'index'])
+->name('participant.dashboard.index')
+->middleware('auth');
 
 
 
@@ -29,5 +38,3 @@ Route::post('register', [RegisterController::class,'store'])->name('auth.registe
     //return \App\Models\User::all();
 
     //});
-
-

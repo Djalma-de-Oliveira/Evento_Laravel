@@ -22,7 +22,7 @@ class RegisterController extends Controller
 
         DB::beginTransaction();
         try {
-       
+
         $user = User::create($requestData['user']);
 
        $user->address()->create($requestData['address']);
@@ -33,7 +33,9 @@ class RegisterController extends Controller
 
        DB::commit();
 
-       return 'conta criada com sucesso';
+       return redirect()
+            ->route('auth.login.create')
+            ->with('success', 'Conta criada com sucesso! Efetue o login');
 
     } catch (\Exception $exception) {
         DB::rollBack();
