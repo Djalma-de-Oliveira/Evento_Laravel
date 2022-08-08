@@ -12,7 +12,7 @@ $(document).on('blur', '#cep', function() {
         method:'GET',
         dataType: 'json',
         success: function(data) {
-            if(data.erro){
+            if (data.erro) {
                 alert('Endereço não encontrado!');
             }
 

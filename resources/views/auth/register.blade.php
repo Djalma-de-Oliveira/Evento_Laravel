@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/sb-admin-2.min.css') }}">
 </head>
 
@@ -14,10 +15,6 @@
 
     <div class="card shadow my-5 w-75 mx-auto">
         <div class="card-body">
-
-
-
-
             <form action="{{ route('auth.register.store') }}" method="POST">
                 @csrf
                 <div class="row">
@@ -55,7 +52,6 @@
                                 placeholder="Senha">
 
                             <div class="invalid-feedback">{{ $errors->first('user.password') }}</div>
-                        </div>
                     </div>
                 </div>
 
@@ -133,7 +129,8 @@
                 <div class="form-group">
                     <input type="text" name="address[complement]"
                         class="form-control {{ $errors->has('address.complement') ? 'is-invalid' : '' }}"
-                        placeholder="Complemento">
+                        placeholder="Complemento"
+                        value="{{ old('address.complement') }}">
 
                     <div class="invalid-feedback">{{ $errors->first('address.complement') }}</div>
                 </div>
@@ -173,9 +170,7 @@
 
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
-    <script>
-        src = "{{ asset('js/auth/register.js')" >
-    </script>
+    <script src="{{ asset('js/auth/register.js') }}"></script>
 </body>
 
 </html>

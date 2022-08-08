@@ -27,7 +27,7 @@ class RegisterController extends Controller
 
        $user->address()->create($requestData['address']);
 
-       foreach ($requestData['phones'] as $phone){
+       foreach ($requestData['phones'] as $phone) {
             $user->phones()->create($phone);
        }
 
