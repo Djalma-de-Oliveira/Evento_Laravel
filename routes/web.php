@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\http\Controllers\Participant\Dashboard\DashboardController;
+use App\http\Controllers\Participant\Dashboard\DashboardController as ParticipantDashboardController;
+use App\Http\Controllers\Organization\Dashboard\DashboardController as OrganizationDashboardController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +31,16 @@ Route::group(['as' => 'auth.'], function() {
         ->middleware('auth');
 });
 
-Route::get('participant/dashboard', [DashboardController::class, 'index'])
-->name('participant.dashboard.index')
-->middleware('auth');
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('participant/dashboard', [ParticipantDashboardController::class, 'index'])
+        ->name('participant.dashboard.index');
+
+Route::get('organization/dashboard', [OrganizationDashboardController::class, 'index'])
+        ->name('organization.dashboard.index');
+
+});
+
+
 
 
 
