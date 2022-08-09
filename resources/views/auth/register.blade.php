@@ -11,6 +11,19 @@
 </head>
 
 <body>
+
+    <h1>Create Post</h1>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <h1 class="text-center my-4">Criar conta</h1>
 
     <div class="card shadow my-5 w-75 mx-auto">

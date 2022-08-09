@@ -23,10 +23,17 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('participant.dashboard.index');
         }
+        
         return redirect()
             ->route('auth.login.create')
             ->with('warning', 'Autenticação falhou')
             ->withInput();
-
     }
+
+    public function destroy()
+    {
+    Auth::logout();
+    return redirect()->route('auth.login.create');
+    }
+
 }

@@ -75,10 +75,13 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <form method="POST" action="{{ route('auth.login.destroy') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Sair
-                                </a>
+                                    </button>
+                            </form>
                             </div>
                         </li>
 
