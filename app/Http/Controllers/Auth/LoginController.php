@@ -21,9 +21,20 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('participant.dashboard.index');
+            $UserRole = auth()->user()->role;
+
+            if ($UserRole === 'participante'){
+                return redirect()->route('participant.dashboard.index');
+            }
+
+            if ($UserRole === 'organization'){
+                return redirect()->route('organization.dashboard.index');
+            }
+
         }
-        
+
+
+
         return redirect()
             ->route('auth.login.create')
             ->with('warning', 'Autenticação falhou')
