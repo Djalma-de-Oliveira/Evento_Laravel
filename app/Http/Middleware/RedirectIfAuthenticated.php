@@ -6,6 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Service\UserService;
 
 class RedirectIfAuthenticated
 {
@@ -16,21 +17,23 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect()->route('role');
-                $UserRole = auth()->user()->role;
-            }
+                $userRole = auth()->user()->role;
+                return redirect(UserService::getDashboardRouteBasedOnUserRole($userRole));
 
 
 
-            if ($UserRole === 'participant') {
-                return redirect()->route('participant.dashboard.index');
-            }
 
-            if ($UserRole === 'organization') {
-                return redirect()->route('organization.dashboard.index');
-            }
+
+
+            //if ($userRole === 'participant') {
+                //return redirect()->route('participant.dashboard.index');
+            //}
+
+            //if ($userRole === 'organization') {
+                //return redirect()->route('organization.dashboard.index');
+            //}
         }
-
+    }
         return $next($request);
     }
 }
