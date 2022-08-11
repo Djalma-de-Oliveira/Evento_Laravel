@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\{User, Address};
+use App\http\Requests\Auth\RegisterRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -12,30 +14,33 @@ class RegisterController extends Controller
    {
         return view('auth.register');
    }
-   public function store(Request $request)
+   public function store(RegisterRequest $request)
    {
-        $requestData = $request->all();
-
-        return $requestData;
+        $requestData = $request->validated();
 
         $requestData['user']['role'] = 'participant';
 
-        //comentado para inserir o mutator
-
-        //$password = bcrypt($requestData['password']);
-
-        //$requestData['password'] = $password;
+        DB::beginTransaction();
+        try {
 
         $user = User::create($requestData['user']);
 
-        //$requestData['address']['user_id'] = $user->id;
-
-       //Address::create($requestData['address']);
-
        $user->address()->create($requestData['address']);
 
-       foreach($requestData['phones'] as $phone){
+       foreach ($requestData['phones'] as $phone) {
             $user->phones()->create($phone);
+       }
+
+       DB::commit();
+
+       return redirect()
+            ->route('auth.login.create')
+            ->with('success', 'Conta criada com sucesso! Efetue o login');
+
+    } catch (\Exception $exception) {
+        DB::rollBack();
+        return 'Mensagem: ' . $exception->getMessage();
+
        }
    }
 }
