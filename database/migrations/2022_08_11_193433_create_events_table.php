@@ -20,7 +20,7 @@ return new class extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->text('target_audience');
-            $table->integer('participante_limit');
+            $table->integer('participants_limit');
             $table->timestamps();
             $table->softDeletes();
         });
