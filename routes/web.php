@@ -3,7 +3,8 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\http\Controllers\Participant\Dashboard\DashboardController as ParticipantDashboardController;
-use App\Http\Controllers\Organization\Dashboard\DashboardController as OrganizationDashboardController;
+use App\Http\Controllers\Organization\
+Dashboard\DashboardController as OrganizationDashboardController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
