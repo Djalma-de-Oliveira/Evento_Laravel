@@ -18,7 +18,8 @@ class EventController extends Controller
         }
 
         return view('organization.events.index', [
-        'events' => $events->paginate(5)
+        'events' => $events->paginate(5),
+        'search' => isset($request->search) ? $request->search : ""
         ]);
     }
     public function create()
@@ -33,5 +34,13 @@ class EventController extends Controller
         return redirect()
         ->route('organization.events.index')
         ->with('success', 'Evento cadastrado com sucesso!');
+    }
+    public function edit(Event $event)
+    {
+
+        return view('organization.events.edit',[
+            'event' => $event
+        ]);
+
     }
 }
