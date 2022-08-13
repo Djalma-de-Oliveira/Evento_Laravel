@@ -22,8 +22,17 @@
         </thead>
         <tbody>
             <!-- CONTEÚDO DA TABELA -->
+            @foreach ($events as $event )
+            <tr>
+                <td class="align-middle">{{ $event->name }}</td>
+                <td class="align-middle">{{ $event->speaker_name }}</td>
+                <td class="align-middle">{{ $event->start_date_formatted }}</td>
+                <td class="align-middle">{{ $event->end_date_formatted }}</td>
+                <td class="align-middle"></td>
+            </tr>     
+            @endforeach
         </tbody>
     </table>
-
+    {{ $events->links() }}
 @endsection
 

@@ -9,9 +9,17 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('organization.events.index');
+        $events = Event::query();
+
+        if (isset($request->search) && $request->search !== '') {
+         $events->where('name', 'like', '%' .$request->search.'%');
+        }
+
+        return view('organization.events.index', [
+        'events' => $events->paginate(5)
+        ]);
     }
     public function create()
     {
@@ -24,6 +32,6 @@ class EventController extends Controller
 
         return redirect()
         ->route('organization.events.index')
-        ->with('success', 'Evento cadastrado com sucesso');
+        ->with('success', 'Evento cadastrado com sucesso!');
     }
 }
