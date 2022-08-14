@@ -38,9 +38,28 @@ class EventController extends Controller
     public function edit(Event $event)
     {
 
-        return view('organization.events.edit',[
+        return view('organization.events.edit', [
             'event' => $event
         ]);
+    }
+
+        public function update(Event $event, EventRequest $request)
+        {
+            $event->update($request->validated());
+
+            return redirect()
+                ->route('organization.events.index')
+                ->with('success', 'Evento atualizado com sucesso!');
+        }
+
+        public function destroy(Event $event)
+        {
+            $event->delete();
+
+            return redirect()
+                ->route('organization.events.index')
+                ->with('success', 'Evento deletado com sucesso');
+        }
 
     }
-}
+
