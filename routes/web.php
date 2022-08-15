@@ -5,7 +5,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\http\Controllers\Participant\Dashboard\DashboardController as ParticipantDashboardController;
 use App\Http\Controllers\Organization\{
     Dashboard\DashboardController as OrganizationDashboardController,
-    Event\EventController
+    Event\EventController,
+    Event\EventSubscriptionController
 };
 use GuzzleHttp\Middleware;
 //use GuzzleHttp\Middleware;???
@@ -41,14 +42,23 @@ Route::group(['middleware' => 'auth'], function() {
         ->middleware('role:participant');
 
     Route::group(['prefix' => 'organization', 'as' => 'organization.', 'middleware' => 'role:organization'], function() {
+        //dashboard
         Route::get('dashboard', [OrganizationDashboardController::class, 'index'])->name('dashboard.index');
 
-        Route::get('events', [EventController::class, 'index'])->name('events.index');
-        Route::get('events/create', [EventController::class, 'create'])->name('events.create');
-        Route::post('events', [EventController::class, 'store'])-> name('events.store');
-        Route::get('events/{event}/edit',[EventController::class, 'edit'])-> name('events.edit');
-        Route::put('events/{event}', [EventController::class,'update'])->name('events.update');
-        Route::delete('events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+        //Route::get('events', [EventController::class, 'index'])->name('events.index');
+        //Route::get('events/create', [EventController::class, 'create'])->name('events.create');
+        //Route::post('events', [EventController::class, 'store'])-> name('events.store');
+        //Route::get('events/{event}', [EventController::class, 'show'])-> name('events.show');
+        //Route::get('events/{event}/edit',[EventController::class, 'edit'])-> name('events.edit');
+        //Route::put('events/{event}', [EventController::class,'update'])->name('events.update');
+        //Route::delete('events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+
+        //eventos
+        Route::post('events/{event}/subscriptions', [EventSubscriptionController::class, 'store'])
+            ->name('events.subscriptions.store');
+            Route::delete('events/{event}/subscriptions/{user}',[EventSubscriptionController::class, 'destroy'])
+            ->name('events.subscriptions.destroy');
+        Route::resource('events', EventController::class);
     });
 
 });

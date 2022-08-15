@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Event extends Model
 {
@@ -19,6 +20,12 @@ class Event extends Model
         'target_audience',
         'participants_limit'
     ];
+
+    //relationships
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     //mutators
     public function setStartDateAttribute($value)
