@@ -9,8 +9,8 @@ use App\Http\Controllers\Organization\{
     Event\EventSubscriptionController
 };
 //use GuzzleHttp\Middleware;???
-use GuzzleHttp\Middleware;
-//use Illuminate\Support\Facades\Route;
+//use GuzzleHttp\Middleware;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
