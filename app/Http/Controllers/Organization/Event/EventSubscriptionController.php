@@ -30,7 +30,7 @@ class EventSubscriptionController extends Controller
             );
         }
 
-        $user ->events()->attach($event->id);
+        $user->events()->attach($event->id);
 
         return back()->with('success', 'isncrição no evento realizada com sucesso!');
     }
