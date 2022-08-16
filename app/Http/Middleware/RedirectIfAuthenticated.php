@@ -6,13 +6,19 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Service\UserService;
+use App\Services\UserService;
 
 class RedirectIfAuthenticated
 {
 
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        /**
+         *@param \Illuminate\Http\Request $request
+         *@param \Closure $next
+         *@param string|null ...$guards
+         *@return mixed
+         */
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
@@ -32,8 +38,8 @@ class RedirectIfAuthenticated
             //if ($userRole === 'organization') {
                 //return redirect()->route('organization.dashboard.index');
             //}
+            }
         }
-    }
         return $next($request);
     }
 }
