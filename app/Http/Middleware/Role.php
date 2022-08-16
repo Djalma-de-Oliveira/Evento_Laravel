@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use App\Service\UserService as ServiceUserService;
 use Closure;
 use Illuminate\Http\Request;
-use App\Services\UserService;
+//use App\Services\UserService;
 
 class Role
 {
