@@ -42,7 +42,7 @@ class RegisterRequest extends FormRequest
             return [
             'user.name' => 'nome',
             'user.email' => 'email',
-            'user.cpf' => 'cpf',
+            'user.cpf' => 'CPF',
             'user.password' => 'senha',
             'phones.0.number' => 'telefone',
             'phone.1.number' => 'celular',
@@ -57,12 +57,6 @@ class RegisterRequest extends FormRequest
 
     }
 
-    //public function messages()
-    //{
-       //return[
-           //'user.name.required' => 'O campo :attribute deve ser preenchido '
-        //];
-
-    //}
+    
 }
 

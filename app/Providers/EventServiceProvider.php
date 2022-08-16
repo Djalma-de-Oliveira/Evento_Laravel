@@ -35,8 +35,10 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return bool
      */
-    public function shouldDiscoverEvents()
-    {
-        return false;
-    }
+
+     
+    //public function shouldDiscoverEvents()
+    //{
+        //return false;
+   // }
 }

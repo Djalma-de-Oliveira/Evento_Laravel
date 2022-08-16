@@ -35,7 +35,7 @@ class EventSubscriptionController extends Controller
         return back()->with('success', 'isncrição no evento realizada com sucesso!');
     }
 
-    public function __destroy(Event $event, User $user)
+    public function destroy(Event $event, User $user)
     {
 
     if(EventService::eventEndDateHasPassed($event)) {
