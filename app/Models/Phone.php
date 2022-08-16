@@ -15,9 +15,9 @@ class Phone extends Model
     ];
 
 //relationships
-public function phone()
+public function users()
 {
-    return $this->hasMany(Phone::class);
+    return $this->hasMany(User::class);
 }
 
 
