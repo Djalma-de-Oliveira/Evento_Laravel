@@ -25,19 +25,6 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 $userRole = auth()->user()->role;
                 return redirect(UserService::getDashboardRouteBasedOnUserRole($userRole));
-
-
-
-
-
-
-            //if ($userRole === 'participant') {
-                //return redirect()->route('participant.dashboard.index');
-            //}
-
-            //if ($userRole === 'organization') {
-                //return redirect()->route('organization.dashboard.index');
-            //}
             }
         }
         return $next($request);

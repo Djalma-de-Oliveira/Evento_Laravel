@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('uf');
             $table->string('city');
             $table->string('district');
-            $table->string('complement')->nulllable();
+            $table->string('complement')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

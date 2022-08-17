@@ -17,7 +17,7 @@ class Phone extends Model
 //relationships
 public function users()
 {
-    return $this->hasMany(User::class);
+    return $this->belongsTo(User::class);
 }
 
 

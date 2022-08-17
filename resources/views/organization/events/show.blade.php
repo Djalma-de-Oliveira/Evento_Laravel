@@ -39,9 +39,9 @@
                         <select class="form-control" name="user_id">
                             <option value="">Selecione</option>
                             @foreach($allParticipantUsers as $user)
-                            <option value="{{ $user->id }}">
-                                {{ $user->name }}
-                            </option>
+                                <option value="{{ $user->id }}">
+                                    {{ $user->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -57,26 +57,38 @@
                 </thead>
                 <tbody>
                     @foreach($event->users as $user)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td class="text-right">
-                            <div class="d-flex align-items-center justify-content-end">
-                                <form method="POST" action="{{ route('organization.events.subscriptions.destroy', [
-                                    'event' => $event->id,
-                                    'user' => $user->id
-                                ]) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class=""btn btn-sm btm-danger>Remover inscrição</button>
-                                </form>
-                            </div>
-
-                        </td>
-                    </tr>
-
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td class="text-right">
+                                <div class="d-flex align-items-center justify-content-end">
+                                    @if ($eventStartDateHasPassed)
+                                        <form method="POST" action="{{ route('organization.events.presences', [
+                                            'event' => $event->id,
+                                            'user' => $user->id
+                                        ]) }}">
+                                            @csrf
+                                            <button class="btn btn-sm mr-2 {{ $user->pivot->present ? 'btn-danger' : 'btn-success' }}">
+                                                {{ $user->pivot->present ? 'Remover presença' : 'Assinar presença' }}
+                                            </button>
+                                        </form>
+                                    @endif
+                                    @if(!$eventEndDateHasPassed)
+                                        <form method="POST" action="{{ route('organization.events.subscriptions.destroy', [
+                                            'event' => $event->id,
+                                            'user' => $user->id
+                                        ]) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-sm btn-danger">Remover inscrição</button>
+                                        </form>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 @endsection
+
